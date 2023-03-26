@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from './layouts/Header';
 
 const App = () => {
     return (
         <>
-            <h1 className="text-3xl">Hello</h1>
+           <Header />
         </>
     );
 };
