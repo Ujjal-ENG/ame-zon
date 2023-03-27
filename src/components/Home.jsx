@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import kops from '../assets/images/kops.jpg';
 const Home = () => {
     return (
@@ -9,9 +10,9 @@ const Home = () => {
                 <h1 className="text-6xl font-bold">New Collection For Fall</h1>
                 <p className="text-gray-500">Discover all the new arrivals of ready-to-wear collection</p>
 
-                <button type="button" className="px-4 py-2 rounded-md bg-orange-500 text-black ">
+                <Link to="/shop" type="button" className="px-4 py-2 rounded-md bg-orange-500 text-black ">
                     Shop Now
-                </button>
+                </Link>
             </div>
 
             {/* right side */}
