@@ -8,7 +8,7 @@ const ProductCard = (props) => {
         <>
             {/* making the each card */}
             <div className="w-[300px] h-[510px] rounded-md border-2 border-black relative">
-                <img src={img} alt={name} className="w-[286px] h-[286px]  mx-auto p-2 rounded-md" />
+                <img src={img ? img : name} alt={name} className="w-[286px] h-[286px]  mx-auto p-2 rounded-md" />
 
                 <h3 className="font-semibold text-2xl p-2">{name.slice(0, 18) + '...'}</h3>
                 <p className="text-xl p-2">Price: ${price}</p>
