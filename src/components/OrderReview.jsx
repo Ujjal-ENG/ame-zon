@@ -36,7 +36,7 @@ const OrderReview = () => {
             <div className="">
                 {newData
                     ? newData.map((el) => {
-                          const { name, price, img, shipping } = el;
+                          const { name, price, img, shipping, quantity } = el;
                           return (
                               <div key={el.id} className="flex w-full  items-center  border-2 border-gray-400 m-5 p-3 rounded-md">
                                   <img src={img ? img : 'https://picsum.photos/200/300?random'} alt={name} className="w-[150px] h-[150px] my-10" />
@@ -45,6 +45,9 @@ const OrderReview = () => {
                                       <h4 className="text-2xl font-semibold">{name.slice(0, 10) + '...'}</h4>
                                       <p className="text-xl p-2">
                                           Price: <span className="text-yellow-500">${price ? price : '00'}</span>
+                                      </p>
+                                      <p className="text-xl p-2">
+                                          Selected Qunatity: <span className="text-yellow-500">{quantity}</span>
                                       </p>
                                       <p className="text-xl p-2">
                                           Shipping Charge: <span className="text-yellow-500">${shipping ? shipping : '00'}</span>
