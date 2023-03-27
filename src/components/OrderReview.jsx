@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import { deleteShoppingCart } from '../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
 
 const OrderReview = () => {
     const data = useLocation();
@@ -25,6 +25,7 @@ const OrderReview = () => {
         navigate('/shop');
     };
     const handleDelete = (id) => {
+        removeFromDb(id);
         const newAllData = newData.filter((el) => el.id !== id);
         setNewData(newAllData);
     };
