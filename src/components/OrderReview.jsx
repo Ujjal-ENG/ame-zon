@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
+import { deleteShoppingCart } from '../utilities/fakedb';
 
 const OrderReview = () => {
     const data = useLocation();
     const [newData, setNewData] = useState(data.state);
-    const price = newData.map((el) => el.price);
-    const shipping = newData.map((el) => el.shipping);
-    let newSum = price.reduce((ps, cs) => ps + cs, 0);
-    let shippingCost = shipping.reduce((ps, cs) => ps + cs, 0);
-    let total = newSum + shippingCost;
-    let tax = Number(((total * 7) / 100).toFixed(2));
-    let grandTotal = total + tax;
-    const handleClearCart = () => {
-        setNewData([]);
-        newSum = 0;
-        shippingCost = 0;
-        grandTotal = 0;
-        tax = 0;
-    };
+    const navigate = useNavigate();
+    let tax = 0;
+    let grandTotal = 0;
+    let totalQuantity = 0;
+    let totalPrice = 0;
+    let shippingCost = 0;
+    for (let id of newData) {
+        totalQuantity += id.quantity;
+        totalPrice += id.price * id.quantity;
+        shippingCost += id.shipping;
+    }
+    tax = (totalPrice * 7) / 100;
+    grandTotal = (totalPrice + tax + shippingCost).toFixed(2);
 
+    const handleClearCart = () => {
+        deleteShoppingCart();
+        navigate('/shop');
+    };
     const handleDelete = (id) => {
         const newAllData = newData.filter((el) => el.id !== id);
         setNewData(newAllData);
@@ -61,8 +65,8 @@ const OrderReview = () => {
             <div className="bg-orange-300 w-[400px] text-center mr-48 h-[350px] fixed  right-0  rounded-lg space-y-3 p-5">
                 <h3 className=" text-center underline text-3xl font-bold">Order Summary</h3>
 
-                <p>Selected Items: {newData.length}</p>
-                <p>Total Price: ${newSum}</p>
+                <p>Selected Items: {totalQuantity}</p>
+                <p>Total Price: ${totalPrice}</p>
                 <p>Total Shipping Cost: ${shippingCost}</p>
                 <p>Tax: ${tax}</p>
                 <p className="font-bold text-xl ">Grand Total: ${grandTotal}</p>
