@@ -5,7 +5,9 @@ const Header = () => {
     return (
         <header className="bg-blue-800 p-3 text-white">
             <nav className="flex justify-between items-center mx-20">
-                <img src={Logo} alt="Ame-Jon" />
+                <NavLink to="/">
+                    <img src={Logo} alt="Ame-Jon" />
+                </NavLink>
 
                 <ul className="flex justify-around items-center text-xl gap-6 font-bold">
                     <NavLink to="/shop">Shop</NavLink>
