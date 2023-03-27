@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 
 const OrderReview = () => {
     const data = useLocation();
-    console.log(data);
+    const [newData, setNewData] = useState(data.state);
+    const price = newData.map((el) => el.price);
+    const shipping = newData.map((el) => el.shipping);
+    let newSum = price.reduce((ps, cs) => ps + cs, 0);
+    let shippingCost = shipping.reduce((ps, cs) => ps + cs, 0);
+    let total = newSum + shippingCost + 112;
+    console.log(newData);
+    const handleClearCart = () => {
+        setNewData([]);
+        newSum = 0;
+        shippingCost = 0;
+        total = 112;
+    };
+
     return (
         <div className="grid grid-cols-2 justify-center m-20 justify-items-center gap-10">
             {/* show the products details */}
             <div className="">
-                {data.state.map((el) => {
+                {newData.map((el) => {
                     const { name, price, img, shipping } = el;
                     return (
                         <div key={el.id} className="flex w-full  items-center  border-2 border-gray-400 m-5 p-3 rounded-md">
@@ -35,13 +48,13 @@ const OrderReview = () => {
             <div className="bg-orange-300 w-[400px] text-center mr-48 h-[350px] fixed  right-0  rounded-lg space-y-3 p-5">
                 <h3 className=" text-center underline text-3xl font-bold">Order Summary</h3>
 
-                <p>Selected Items: {data.state.length}</p>
-                <p>Total Price: $10</p>
-                <p>Total Shipping Cost: $11</p>
+                <p>Selected Items: {newData.length}</p>
+                <p>Total Price: ${newSum}</p>
+                <p>Total Shipping Cost: ${shippingCost}</p>
                 <p>Tax: $112</p>
-                <p className="font-bold text-xl ">Grand Total: $10</p>
+                <p className="font-bold text-xl ">Grand Total: ${total}</p>
 
-                <button type="button" className=" w-full bottom-20 px-4 py-2 rounded-md bg-red-500 text-white " onClick="">
+                <button type="button" className=" w-full bottom-20 px-4 py-2 rounded-md bg-red-500 text-white " onClick={() => handleClearCart()}>
                     Clear Cart
                 </button>
                 <Link type="button" className="w-full bottom-0 px-4 py-2 rounded-md bg-yellow-500 text-white text-center" to="*">
