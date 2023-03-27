@@ -25,11 +25,14 @@ const Shop = () => {
     const newSum = price.reduce((ps, cs) => ps + cs, 0);
     const shippingCost = shipping.reduce((ps, cs) => ps + cs, 0);
 
-    let total = shippingCost + newSum + 112;
-
+    let total = shippingCost + newSum;
+    let tax = Number(((total * 7) / 100).toFixed(2));
+    let grandTotal = total + tax;
     const handleClearCart = () => {
         setCart([]);
-        total = 112;
+        total = 0;
+        tax = 0;
+        grandTotal = 0;
     };
     return (
         <div className="grid grid-cols-5 w-full h-screen">
@@ -46,8 +49,8 @@ const Shop = () => {
                 <p>Selected Items: {cart.length}</p>
                 <p>Total Price: ${newSum}</p>
                 <p>Total Shipping Cost: ${shippingCost}</p>
-                <p>Tax: $112</p>
-                <p className="font-bold text-xl ">Grand Total: ${total}</p>
+                <p>Tax: ${tax}</p>
+                <p className="font-bold text-xl ">Grand Total: ${grandTotal}</p>
 
                 <button type="button" className="px-4 py-2 rounded-md bg-red-500 text-white w-full" onClick={handleClearCart}>
                     Clear Cart
