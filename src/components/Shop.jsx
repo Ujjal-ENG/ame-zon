@@ -52,7 +52,7 @@ const Shop = () => {
                 <button type="button" className="px-4 py-2 rounded-md bg-red-500 text-white w-full" onClick={handleClearCart}>
                     Clear Cart
                 </button>
-                <Link type="button" className="px-4 py-2 rounded-md bg-yellow-500 text-white w-full text-center" to="/order-review">
+                <Link type="button" className="px-4 py-2 rounded-md bg-yellow-500 text-white w-full text-center" to="/order-review" state={cart}>
                     Review Order
                 </Link>
             </div>
