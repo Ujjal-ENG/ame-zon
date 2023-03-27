@@ -15,8 +15,8 @@ const CartDeatis = (props) => {
         totalPrice += id.price * id.quantity;
         shippingCost += id.shipping;
     }
-    tax = (totalPrice * 7) / 100;
-    grandTotal = totalPrice + tax + shippingCost.toFixed(2);
+    tax = Number(((totalPrice * 7) / 100).toFixed(2));
+    grandTotal = totalPrice + tax + shippingCost;
 
     const handleClearCart = () => {
         deleteShoppingCart();
