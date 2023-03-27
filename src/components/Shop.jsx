@@ -25,10 +25,11 @@ const Shop = () => {
     const newSum = price.reduce((ps, cs) => ps + cs, 0);
     const shippingCost = shipping.reduce((ps, cs) => ps + cs, 0);
 
-    const total = shippingCost + newSum + 112;
+    let total = shippingCost + newSum + 112;
 
     const handleClearCart = () => {
         setCart([]);
+        total = 112;
     };
     return (
         <div className="grid grid-cols-5 w-full h-screen">
