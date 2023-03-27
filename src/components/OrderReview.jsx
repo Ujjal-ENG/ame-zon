@@ -10,12 +10,16 @@ const OrderReview = () => {
     let newSum = price.reduce((ps, cs) => ps + cs, 0);
     let shippingCost = shipping.reduce((ps, cs) => ps + cs, 0);
     let total = newSum + shippingCost + 112;
-    console.log(newData);
     const handleClearCart = () => {
         setNewData([]);
         newSum = 0;
         shippingCost = 0;
         total = 112;
+    };
+
+    const handleDelete = (id) => {
+        const newAllData = newData.filter((el) => el.id !== id);
+        setNewData(newAllData);
     };
 
     return (
@@ -38,7 +42,11 @@ const OrderReview = () => {
                                 </p>
                             </div>
 
-                            <RiDeleteBin6Fill className="text-7xl text-red-500 rounded-full bg-red-300 p-2 cursor-pointer active:bg-red-600 transition-all" type="button" />
+                            <RiDeleteBin6Fill
+                                className="text-7xl text-red-500 rounded-full bg-red-300 p-2 cursor-pointer active:bg-red-600 transition-all"
+                                type="button"
+                                onClick={() => handleDelete(el.id)}
+                            />
                         </div>
                     );
                 })}
