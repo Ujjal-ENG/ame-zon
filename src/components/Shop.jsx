@@ -40,7 +40,7 @@ const Shop = () => {
                     })}
             </div>
 
-            <div className="bg-orange-300 space-y-3 p-5">
+            <div className="bg-orange-300 space-y-3 p-5 fixed right-10 my-20 rounded-lg">
                 <h3 className="text-2xl text-center underline">Order Summary</h3>
 
                 <p>Selected Items: {cart.length}</p>
