@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { addToDb, deleteShoppingCart, getShoppingCart } from '../utilities/fakedb';
+import { addToDb, getShoppingCart } from '../utilities/fakedb';
 import CartDeatis from './CartDeatis';
 import ProductCard from './ProductCard';
 const Shop = () => {

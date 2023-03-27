@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { deleteShoppingCart } from '../utilities/fakedb';
 
 const CartDeatis = (props) => {
     const cart = props.data;
-
+    const [isClicked, setIsClicked] = useState(true);
     let tax = 0;
     let grandTotal = 0;
     let totalQuantity = 0;
@@ -20,17 +20,18 @@ const CartDeatis = (props) => {
 
     const handleClearCart = () => {
         deleteShoppingCart();
+        setIsClicked(!isClicked);
     };
 
     return (
         <div className="bg-orange-300 space-y-3 p-5 fixed right-10 my-20 rounded-lg">
             <h3 className="text-2xl text-center underline">Order Summary</h3>
 
-            <p>Selected Items: {totalQuantity}</p>
-            <p>Total Price: ${totalPrice}</p>
-            <p>Total Shipping Cost: ${shippingCost}</p>
-            <p>Tax: ${tax}</p>
-            <p className="font-bold text-xl ">Grand Total: ${grandTotal}</p>
+            <p>Selected Items: {isClicked ? totalQuantity : 0}</p>
+            <p>Total Price: ${isClicked ? totalPrice : 0}</p>
+            <p>Total Shipping Cost: ${isClicked ? shippingCost : 0}</p>
+            <p>Tax: ${isClicked ? tax : 0}</p>
+            <p className="font-bold text-xl ">Grand Total: ${isClicked ? grandTotal : 0}</p>
 
             <button type="button" className="px-4 py-2 rounded-md bg-red-500 text-white w-full" onClick={handleClearCart}>
                 Clear Cart
