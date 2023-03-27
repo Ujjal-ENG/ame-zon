@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { addToDb, getShoppingCart } from '../utilities/fakedb';
 import ProductCard from './ProductCard';
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -8,6 +9,26 @@ const Shop = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const storedCart = getShoppingCart();
+
+        const savedCart = [];
+        // step 1 : get id of the storedCart
+
+        for (const id in storedCart) {
+            // get product from the products state by using id
+            const addedProducts = products.find((el) => el.id === id);
+
+            // get quantity from the addedProducts
+            if (addedProducts) {
+                const quantity = storedCart[id];
+                addedProducts.quantity = quantity;
+                savedCart.push(addedProducts);
+            }
+        }
+        setCart(savedCart);
+    }, [products]);
 
     const fetchData = async () => {
         const fetchUrl = await fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json');
@@ -18,6 +39,7 @@ const Shop = () => {
     const handleAddtoCart = (details) => {
         const newCart = [...cart, details];
         setCart(newCart);
+        addToDb(details.id);
     };
 
     const price = cart.map((el) => el.price);
