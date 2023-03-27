@@ -16,7 +16,9 @@ const ProductCard = (props) => {
                 <p className="text-gray-400 p-2">Manufacturer: {seller}</p>
                 <p className="text-gray-400 p-2">Rating: {ratings} star</p>
 
-                <button className="w-full py-2 bg-orange-300 border-2 border-gray-400 text-xl flex justify-center items-center gap-2 absolute bottom-0 rounded-b-md" type="button">
+                <button
+                    className="w-full py-2 bg-orange-300 border-2 border-gray-400 text-xl flex justify-center items-center gap-2 absolute bottom-0 rounded-b-md active:bg-orange-600 transition-all"
+                    type="button">
                     Add to Cart <BsCartPlusFill />
                 </button>
             </div>
