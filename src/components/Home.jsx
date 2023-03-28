@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import kops from '../assets/images/kops.jpg';
 const Home = () => {
     return (
-        <div className="flex justify-between items-center mx-20 my-5">
+        <div className="flex justify-between items-center mx-20 my-24">
             {/* left side */}
             <div className="space-y-5 pl-20">
                 <p className="text-yellow-500">Sale up to 70% off</p>
