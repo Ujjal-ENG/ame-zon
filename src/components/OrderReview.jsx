@@ -5,6 +5,7 @@ import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
 
 const OrderReview = () => {
     const data = useLocation();
+    console.log(data);
     const [newData, setNewData] = useState(data.state || []);
     const navigate = useNavigate();
     let tax = 0;
@@ -42,7 +43,7 @@ const OrderReview = () => {
                                   <img src={img ? img : 'https://picsum.photos/200/300?random'} alt={name} className="w-[150px] h-[150px] my-10" />
 
                                   <div className="flex flex-col justify-between items-center mr-10">
-                                      <h4 className="text-2xl font-semibold">{name.slice(0, 10) + '...'}</h4>
+                                      <h4 className="text-xl font-semibold">{name.slice(0, 15) + '...'}</h4>
                                       <p className="text-xl p-2">
                                           Price: <span className="text-yellow-500">${price ? price : '00'}</span>
                                       </p>
