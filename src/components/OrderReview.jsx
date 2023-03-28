@@ -5,7 +5,7 @@ import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
 
 const OrderReview = () => {
     const data = useLocation();
-    const [newData, setNewData] = useState(data.state);
+    const [newData, setNewData] = useState(data.state || []);
     const navigate = useNavigate();
     let tax = 0;
     let grandTotal = 0;
