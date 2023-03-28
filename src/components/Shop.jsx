@@ -56,7 +56,7 @@ const Shop = () => {
     };
 
     return (
-        <div className="grid grid-cols-5 w-full h-screen">
+        <div className="grid grid-cols-5 w-full h-screen mt-12">
             <div className="col-span-4 grid grid-cols-3 justify-items-center gap-6 p-10">
                 {products &&
                     products.map((el) => {
