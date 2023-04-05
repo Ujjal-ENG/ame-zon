@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { deleteShoppingCart } from '../utilities/fakedb';
 
 const CartDeatis = (props) => {
@@ -17,10 +17,12 @@ const CartDeatis = (props) => {
     }
     tax = Number(((totalPrice * 7) / 100).toFixed(2));
     grandTotal = totalPrice + tax + shippingCost;
+    const navigate = useNavigate();
 
     const handleClearCart = () => {
         deleteShoppingCart();
         setIsClicked(!isClicked);
+        navigate('/shop');
     };
 
     return (
