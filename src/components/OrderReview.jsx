@@ -20,20 +20,20 @@ const OrderReview = () => {
                           const { name, price, img, shipping, quantity } = el;
                           return (
                               <div key={el.id} className="flex w-full  items-center  border-2 border-gray-400 m-5 p-3 rounded-md">
-                                  <img src={img ? img : 'https://picsum.photos/200/300?random'} alt={name} className="flex-none w-[250px] h-[250px] my-10" />
+                                  <img src={img ? img : 'https://picsum.photos/200/300?random'} alt={name} className="flex-none w-[90px] h-[90px] my-10" />
 
                                   <div
                                       className="grow
                                   flex  justify-between items-center mr-10">
                                       <div className="ml-6">
                                           <h4 className="text-xl font-semibold">{name}</h4>
-                                          <p className="text-xl p-2">
+                                          <p className="text-xl ">
                                               Price: <span className="text-yellow-500">${price ? price : '00'}</span>
                                           </p>
-                                          <p className="text-xl p-2">
+                                          <p className="text-xl ">
                                               Selected Qunatity: <span className="text-yellow-500">{quantity}</span>
                                           </p>
-                                          <p className="text-xl p-2">
+                                          <p className="text-xl ">
                                               Shipping Charge: <span className="text-yellow-500">${shipping ? shipping : '00'}</span>
                                           </p>
                                       </div>
