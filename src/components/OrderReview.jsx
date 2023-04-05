@@ -40,7 +40,7 @@ const OrderReview = () => {
 
                                       <div>
                                           <RiDeleteBin6Fill
-                                              className="flex-none text-7xl text-red-500 rounded-full bg-red-300 p-2 cursor-pointer active:bg-red-600 transition-all"
+                                              className="text-6xl text-red-500 rounded-full p-2 bg-red-300 cursor-pointer active:bg-red-600 transition-all"
                                               type="button"
                                               onClick={() => handleDelete(el.id)}
                                           />
