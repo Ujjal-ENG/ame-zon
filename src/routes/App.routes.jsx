@@ -1,6 +1,7 @@
 import App from '../App';
 import Home from '../components/Home';
-import Home from '../components/Shop';
+import Shop from '../components/Shop';
+import OrderReview from '../components/OrderReview';
 
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />
+            },
+            {
+                path: '/order-review',
+                element: <OrderReview />
             }
         ]
     }
