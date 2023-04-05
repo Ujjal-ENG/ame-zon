@@ -11,8 +11,6 @@ const OrderReview = () => {
         removeFromDb(id);
     };
 
-    console.log(data);
-
     return (
         <div className="grid grid-cols-4 justify-center m-20">
             {/* show the products details */}
