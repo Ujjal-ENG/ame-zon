@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
 
 const OrderReview = () => {
-    const data = useLocation();
+    const data = useLoaderData();
     console.log(data);
     const [newData, setNewData] = useState(data.state || []);
     const navigate = useNavigate();
@@ -30,6 +30,8 @@ const OrderReview = () => {
         const newAllData = newData.filter((el) => el.id !== id);
         setNewData(newAllData);
     };
+
+    console.log(data);
 
     return (
         <div className="grid grid-cols-2 justify-center m-20 justify-items-center gap-10">

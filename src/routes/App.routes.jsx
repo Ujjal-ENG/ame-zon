@@ -5,6 +5,7 @@ import Shop from '../components/Shop';
 import OrderReview from '../components/OrderReview';
 
 import { createBrowserRouter } from 'react-router-dom';
+import { cartProductsLoader } from '../loaders/cartProductsLoaders';
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/order-review',
-                element: <OrderReview />
+                element: <OrderReview />,
+                loader: cartProductsLoader
             }
         ]
     }
