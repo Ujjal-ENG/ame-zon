@@ -58,7 +58,7 @@ const OrderReview = () => {
 
             {/* show the Order Summary History */}
             <div className="col-span-1">
-                <CartDeatis data={newData} name="Preview Order" link="*" />
+                <CartDeatis data={newData} name="Proceed Checkout" link="*" />
             </div>
         </div>
     );
