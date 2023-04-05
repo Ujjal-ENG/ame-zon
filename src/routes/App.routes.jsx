@@ -6,11 +6,13 @@ import OrderReview from '../components/OrderReview';
 
 import { createBrowserRouter } from 'react-router-dom';
 import { cartProductsLoader } from '../loaders/cartProductsLoaders';
+import ErrorPage from '../ErrorPage';
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
