@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
+import { removeFromDb } from '../utilities/fakedb';
 import CartDeatis from './CartDeatis';
 
 const OrderReview = () => {
@@ -49,7 +49,7 @@ const OrderReview = () => {
             </div>
 
             {/* show the Order Summary History */}
-            <CartDeatis data={data} />
+            <CartDeatis data={data} name="Preview Order" link="*" />
         </div>
     );
 };
