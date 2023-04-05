@@ -1,5 +1,6 @@
 import App from '../App';
 import Home from '../components/Home';
+import Login from '../components/Login';
 import Shop from '../components/Shop';
 import OrderReview from '../components/OrderReview';
 
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/login',
+                element: <Login />
             },
             {
                 path: '/shop',
