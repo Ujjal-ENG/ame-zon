@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { removeFromDb } from '../utilities/fakedb';
@@ -6,8 +6,12 @@ import CartDeatis from './CartDeatis';
 
 const OrderReview = () => {
     const data = useLoaderData();
+    const [newData, setNewData] = useState(data);
 
     const handleDelete = (id) => {
+        const filterData = newData.filter((el) => el.id !== id);
+
+        setNewData(filterData);
         removeFromDb(id);
     };
 
@@ -15,8 +19,8 @@ const OrderReview = () => {
         <div className="grid grid-cols-4 justify-center m-20">
             {/* show the products details */}
             <div className="col-span-3">
-                {data
-                    ? data.map((el) => {
+                {newData
+                    ? newData.map((el) => {
                           const { name, price, img, shipping, quantity } = el;
                           return (
                               <div key={el.id} className="flex w-full  items-center  border-2 border-gray-400 m-5 p-3 rounded-md">
@@ -54,7 +58,7 @@ const OrderReview = () => {
 
             {/* show the Order Summary History */}
             <div className="col-span-1">
-                <CartDeatis data={data} name="Preview Order" link="*" />
+                <CartDeatis data={newData} name="Preview Order" link="*" />
             </div>
         </div>
     );
